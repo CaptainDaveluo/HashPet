@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,18 +15,26 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.debla.hashpet.Model.Product;
+import com.debla.hashpet.Model.BaseJsonObject;
+import com.debla.hashpet.Model.ProductSellDetail;
+import com.debla.hashpet.Model.SellerInfo;
 import com.debla.hashpet.R;
 import com.debla.hashpet.Utils.HttpUtil;
 import com.debla.hashpet.Utils.ImageLoader;
-import com.debla.hashpet.services.imps.ProService;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * Created by Dave-PC on 2018/4/15.
@@ -40,8 +49,9 @@ public class ShowGoodsResultActivity extends Activity{
     private String proName;
     private String proTag;
     private String proShopId;
-    private List<Product> dataList;
+    private List<ProductSellDetail> dataList;
     private ProAdapter proAdapter;
+    private Gson gson;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,13 +79,45 @@ public class ShowGoodsResultActivity extends Activity{
             params.put("proTag",proTag);
         if(proShopId!=null && !"".equals(proShopId))
             params.put("proShopId",proShopId);
-        ProService proService = new ProService();
+        /*ProService proService = new ProService();
         proService.setUrl(url);
         proService.setHandler(listHandler);
-        proService.getProductByCondition(params);
-
+        proService.getProductByCondition(params);*/
+        initDataList(params);
     }
 
+
+    //从服务器获取宝贝资源
+    public void initDataList(Map<String,String> params) {
+        gson = new Gson();
+        HttpUtil httpUtil = new HttpUtil();
+        String url = HttpUtil.getUrl(getApplicationContext()) + "/queryProduct";
+        httpUtil.postRequest(url, params, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("debug", "从服务器读取首页信息失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String JSON = response.body().string();
+                try {
+                    Log.e("debug", JSON);
+                    Type jsonType = new TypeToken<BaseJsonObject<List<ProductSellDetail>>>() {
+                    }.getType();
+                    BaseJsonObject<SellerInfo> jsonObject = null;
+                    jsonObject = (BaseJsonObject) gson.fromJson(JSON, jsonType);
+                    dataList = (List<ProductSellDetail>) jsonObject.getResult();
+                    Message msg = new Message();
+                    msg.what=1004;
+                    listHandler.sendMessage(msg);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
     /**
      * 处理ListView获取数据
@@ -84,19 +126,17 @@ public class ShowGoodsResultActivity extends Activity{
         @Override
         public boolean handleMessage(Message msg) {
             if(msg.what==1004){
-                dataList = (List<Product>) msg.obj;
                 String imgUrl=HttpUtil.getUrl(getApplicationContext())+"getImage";
                 proAdapter = new ProAdapter(imgUrl);
                 mListView.setAdapter(proAdapter);
-                mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(),ProDetailActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("product",dataList.get(position));
+                        intent.putExtra("data",bundle);
+                        startActivity(intent);
                     }
                 });
             }

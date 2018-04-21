@@ -12,6 +12,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +20,16 @@ import android.widget.Toast;
 import com.debla.hashpet.Model.User;
 import com.debla.hashpet.R;
 import com.debla.hashpet.Utils.AppContext;
+import com.debla.hashpet.Utils.SelectDialog;
 import com.debla.hashpet.activities.ConsoleActivity;
 import com.debla.hashpet.activities.LoginActivity;
 import com.debla.hashpet.activities.NewSellerActivity;
 import com.debla.hashpet.activities.PetCircleActivity;
 import com.debla.hashpet.activities.ShopCarActivity;
 import com.debla.hashpet.activities.ShowOrderActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -112,6 +117,9 @@ public class MineFragment extends Fragment{
                 startActivity(intent);
             }
         });
+        user = appContext.getUser();
+        if(user!=null)
+            tvNickName.setText(user.getNickname());
         return mRootView;
     }
 
@@ -126,6 +134,17 @@ public class MineFragment extends Fragment{
                 if(user==null) {
                     Intent intent = new Intent(getContext(), LoginActivity.class);
                     startActivity(intent);
+                }else{
+                    List<String> names = new ArrayList<>();
+                    names.add("退出用户");
+                    showDialog(new SelectDialog.SelectDialogListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            user = null;
+                            appContext.setUser(user);
+                            tvNickName.setText("请先登录");
+                        }
+                    },names);
                 }
             }
         });
@@ -137,6 +156,12 @@ public class MineFragment extends Fragment{
         localBroadcastManager.registerReceiver(broadcastReceiver,intentFilter);
     }
 
+
+    private SelectDialog showDialog(SelectDialog.SelectDialogListener listener, List<String> names) {
+        SelectDialog dialog = new SelectDialog(getActivity(), R.style.transparentFrameWindowStyle, listener, names);
+        dialog.show();
+        return dialog;
+    }
 
     /**
      * 登陆广播接收通知修改昵称
