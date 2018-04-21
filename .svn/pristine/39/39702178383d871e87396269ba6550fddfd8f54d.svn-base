@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_del.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\ic_del.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\checkbox_normal.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\checkbox_normal.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\text_indicator.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\text_indicator.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\grid_camera.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\grid_camera.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\checkbox_checked.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\checkbox_checked.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\list_selected.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\list_selected.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\default_image.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\default_image.png"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_back.png",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\0776e62fd4821ea29dd91d9bf9b5582fa7db6ad6\\output\\res\\mipmap-xxhdpi-v4\\ic_back.png"
+    }
+]

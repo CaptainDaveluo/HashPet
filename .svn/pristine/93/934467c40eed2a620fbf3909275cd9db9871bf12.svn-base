@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "E:\\androidworkspace\\HashPet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\Dave-PC\\.android\\build-cache\\8f68ca54a4ab140dcc9df121a8c0f4b1e52cb741\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    }
+]

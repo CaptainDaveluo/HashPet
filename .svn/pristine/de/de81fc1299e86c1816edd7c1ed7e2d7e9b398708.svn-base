@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\androidworkspace\HashPet\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="E:\androidworkspace\HashPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_7347cd3c8192cbba802d7ff9dc16eaa7d9ea1064\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\androidworkspace\HashPet\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ebf0cf34024a7d46d492699b564b38b2faef66a8">
+        <dex dex="E:\androidworkspace\HashPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_25facd98f4e8b023cd97ff9b5a121f16214dc077\classes.dex" />
+    </item>
+
+</items>

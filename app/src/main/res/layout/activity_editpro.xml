@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/edit_piv_head"
+            android:src="@drawable/default_pet_info_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="商品名称"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/pro_nanme"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:hint="设置商品名称"
+                android:gravity="right"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout
+            android:background="#eeeeee"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="商品类型"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/pro_type"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:entries="@array/protype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="售价"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+            <EditText
+                android:layout_width="200dp"
+                android:id="@+id/edit_pro_price"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:inputType="numberDecimal"
+                android:layout_toLeftOf="@+id/tv_rmb"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_rmb"
+                android:text="RMB"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="库存"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edit_pro_stock"
+                android:layout_width="200dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tv_stock"
+                android:inputType="numberDecimal"
+                android:layout_marginRight="22dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_stock"
+                android:text="个"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="可抵积分"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edit_pet_intergral"
+                android:layout_width="200dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:inputType="numberDecimal"
+                android:layout_toLeftOf="@+id/tv_intergral"
+                android:layout_marginRight="22dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_intergral"
+                android:text="个"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <Button
+            android:text="提交"
+            android:id="@+id/btn_submit"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/shape_next"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+</LinearLayout>

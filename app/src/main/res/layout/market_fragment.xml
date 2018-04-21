@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:src="@drawable/dog" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-35dp"
+                        android:padding="10dp"
+                        android:src="@drawable/cat" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:src="@drawable/clean" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-35dp"
+                        android:padding="10dp"
+                        android:src="@drawable/clothes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:src="@drawable/daliy" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-35dp"
+                        android:padding="10dp"
+                        android:src="@drawable/toys" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="热门推荐"
+                        android:layout_marginLeft="15px"
+                        android:textColor="#222222"
+                        android:textSize="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/iv_bigdog"
+                            android:src="@drawable/shop_child4"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp" />
+                        <ImageView
+                            android:src="@drawable/shop_child1"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/iv_dogtoys"
+                            android:src="@drawable/shop_child16"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp" />
+                        <ImageView
+                            android:src="@drawable/shop_child17"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp" />
+                        <ImageView
+                            android:id="@+id/iv_clean"
+                            android:src="@drawable/shop_child18"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/iv_outdaily"
+                        android:src="@drawable/shop_child19"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp" />
+                    <ImageView
+                        android:id="@+id/iv_beauty"
+                        android:src="@drawable/shop_child20"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
