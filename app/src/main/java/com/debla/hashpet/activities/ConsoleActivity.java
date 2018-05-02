@@ -29,4 +29,9 @@ public class ConsoleActivity extends Activity{
         Intent intent = new Intent(getApplication(),StoreManageActivity.class);
         startActivity(intent);
     }
+
+    public  void onSellerOrderManage(View v){
+        Intent intent = new Intent(getApplication(),OrderManageActiity.class);
+        startActivity(intent);
+    }
 }

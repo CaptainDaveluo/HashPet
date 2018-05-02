@@ -30,6 +30,7 @@ import com.debla.hashpet.activities.ShowOrderActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -142,6 +143,9 @@ public class MineFragment extends Fragment{
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             user = null;
                             appContext.setUser(user);
+                            Map map = appContext.getInnerMap();
+                            map.clear();
+                            appContext.setInnerMap(map);
                             tvNickName.setText("请先登录");
                         }
                     },names);

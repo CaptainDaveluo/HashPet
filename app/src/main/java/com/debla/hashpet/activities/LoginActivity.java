@@ -7,15 +7,30 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.debla.hashpet.Model.BaseJsonObject;
+import com.debla.hashpet.Model.SellerInfo;
 import com.debla.hashpet.Model.User;
 import com.debla.hashpet.R;
 import com.debla.hashpet.Utils.AppContext;
+import com.debla.hashpet.Utils.HttpUtil;
 import com.debla.hashpet.services.imps.UserService;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * Created by Dave-PC on 2017/10/29.
@@ -25,6 +40,8 @@ public class LoginActivity extends Activity{
     private EditText etPhoneNum;
     private EditText etPassword;
     private User user;
+    private SellerInfo seller;
+    private AppContext appContext;
     public static final String action="com.debla.hashpet.LoginAction";
 
     @Override
@@ -60,6 +77,7 @@ public class LoginActivity extends Activity{
                         LocalBroadcastManager.getInstance(getApplication()).sendBroadcast(intent);
                         //设置全局变量user
                         AppContext context = (AppContext) getApplication();
+                        checkSeller(user);
                         context.setUser(user);
                         finish();
                     }
@@ -81,6 +99,37 @@ public class LoginActivity extends Activity{
         user.setPhonenum(phoneNum);
         user.setPassword(passWord);
         userService.doLogin(user);
+    }
+
+    public void checkSeller(User user){
+        String url= HttpUtil.getUrl(getApplication())+"getSellerInfo";
+        HttpUtil httpUtil = new HttpUtil();
+        Map<String,String> params = new HashMap<>();
+        params.put("userId",String.valueOf(user.getUserid()));
+        appContext = (AppContext) getApplication();
+        httpUtil.postRequest(url, params, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("debug","请求接口出现异常"+e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String JSON = response.body().string();
+                Gson gson = new Gson();
+                try {
+                    Log.e("debug",JSON);
+                    Type jsonType = new TypeToken<BaseJsonObject<SellerInfo>>(){}.getType();
+                    BaseJsonObject<SellerInfo> jsonObject = null;
+                    jsonObject = (BaseJsonObject) gson.fromJson(JSON, jsonType);
+                    seller = (SellerInfo) jsonObject.getResult();
+                    appContext.getInnerMap().put("seller",seller);
+                }catch (Exception e){
+                    Log.e("debug","解析json过程出现异常"+e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 }

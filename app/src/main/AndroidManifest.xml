@@ -49,9 +49,14 @@
         <activity android:name=".activities.ShowOrderActivity"
             android:theme="@style/PayBar"
             />
+        <activity android:name=".activities.OrderManageActiity"
+            android:theme="@style/PayBar"
+            />
         <activity android:name=".activities.PetCircleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".activities.ShowGoodsResultActivity"
+            android:theme="@style/PayBar"/>
+        <activity android:name=".activities.ShowOrderDetailActivity"
             android:theme="@style/PayBar"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

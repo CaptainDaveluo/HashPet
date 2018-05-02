@@ -1,6 +1,7 @@
 package com.debla.hashpet.activities;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.debla.hashpet.R;
 import com.debla.hashpet.fragments.IndexFragment;
@@ -45,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout tabService;    //服务Tab
     private LinearLayout tabMine;       //我的Tab
 
+    private TextView tvHome;
+    private TextView tvBuy;
+    private TextView tvService;
+    private TextView tvMime;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgMarket = (ImageView) findViewById(R.id.img_buy);
         mImgService = (ImageView) findViewById(R.id.img_service);
         mImgMine = (ImageView) findViewById(R.id.img_mine);
+
+        tvHome = (TextView) findViewById(R.id.tv_home);
+        tvBuy = (TextView) findViewById(R.id.tv_buy);
+        tvService = (TextView) findViewById(R.id.tv_service);
+        tvMime = (TextView) findViewById(R.id.tv_mine);
 
         mImgIndex.setBackgroundResource(R.drawable.ic_show_press);
         mFragments = new ArrayList<Fragment>();
@@ -103,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
         mViewPager.setOffscreenPageLimit(4);
+        tvHome.setTextColor(Color.parseColor("#F2483E"));
         mViewPager.setAdapter(mPagerAdapter);
     }
 
@@ -111,6 +125,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgMarket.setBackgroundResource(R.drawable.ic_bottom_share);
         mImgService.setBackgroundResource(R.drawable.ic_service);
         mImgMine.setBackgroundResource(R.drawable.ic_me);
+
+        tvHome.setTextColor(Color.parseColor("#8A000000"));
+        tvBuy.setTextColor(Color.parseColor("#8A000000"));
+        tvService.setTextColor(Color.parseColor("#8A000000"));
+        tvMime.setTextColor(Color.parseColor("#8A000000"));
     }
 
     public void initEvent(){
@@ -132,18 +151,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case 0:
                         resetImg();
                         mImgIndex.setBackgroundResource(R.drawable.ic_show_press);
+                        tvHome.setTextColor(Color.parseColor("#F2483E"));
                         break;
                     case 1:
                         resetImg();
                         mImgMarket.setBackgroundResource(R.drawable.ic_bottom_share_press);
+                        tvBuy.setTextColor(Color.parseColor("#F2483E"));
                         break;
                     case 2:
                         resetImg();
                         mImgService.setBackgroundResource(R.drawable.ic_service_press);
+                        tvService.setTextColor(Color.parseColor("#F2483E"));
                         break;
                     case 3:
                         resetImg();
                         mImgMine.setBackgroundResource(R.drawable.ic_me_press);
+                        tvMime.setTextColor(Color.parseColor("#F2483E"));
                         break;
                 }
             }
@@ -163,21 +186,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 resetImg();
                 mViewPager.setCurrentItem(0);
                 mImgIndex.setBackgroundResource(R.drawable.ic_show_press);
+                tvHome.setTextColor(Color.parseColor("#F2483E"));
                 break;
             case R.id.tab_market:
                 resetImg();
                 mViewPager.setCurrentItem(1);
                 mImgMarket.setBackgroundResource(R.drawable.ic_bottom_share_press);
+                tvBuy.setTextColor(Color.parseColor("#F2483E"));
                 break;
             case R.id.tab_service:
                 resetImg();
                 mViewPager.setCurrentItem(2);
                 mImgService.setBackgroundResource(R.drawable.ic_service_press);
+                tvService.setTextColor(Color.parseColor("#F2483E"));
                 break;
             case R.id.tab_mine:
                 resetImg();
                 mViewPager.setCurrentItem(3);
                 mImgMine.setBackgroundResource(R.drawable.ic_me_press);
+                tvMime.setTextColor(Color.parseColor("#F2483E"));
                 break;
         }
     }

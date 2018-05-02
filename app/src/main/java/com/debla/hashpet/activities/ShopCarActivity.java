@@ -461,6 +461,7 @@ public class ShopCarActivity extends AppCompatActivity implements View.OnClickLi
                                     String name = entry.getKey();
                                     orders.put(name, newList);
                                 }
+                                bundle.putDouble("totalPrice",mtotalPrice);
                                 bundle.putSerializable("childs", (Serializable) orders);
                                 intent.putExtra("data", bundle);
                                 startActivityForResult(intent,1);

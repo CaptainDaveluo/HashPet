@@ -137,7 +137,7 @@ public class IndexListView extends ListView {
 		// TODO Auto-generated method stub
 		gson = new Gson();
 		HttpUtil httpUtil = new HttpUtil();
-		String url = HttpUtil.getUrl(getContext())+"/getIndexProduct";
+		String url = HttpUtil.getUrl(getContext())+"getIndexProduct";
 		Map<String,String> params = new HashMap<>();
 		threadOK = false;
 		httpUtil.postRequest(url, params, new Callback() {
@@ -350,7 +350,7 @@ public class IndexListView extends ListView {
 
         public IndexAdapter(Context context){
             imageLoader = new ImageLoader(context);
-            url = HttpUtil.getUrl(context)+"/getImage";
+            url = HttpUtil.getUrl(context)+"getImage";
         }
 		@Override
 		public int getCount() {

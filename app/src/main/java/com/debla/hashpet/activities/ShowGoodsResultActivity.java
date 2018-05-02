@@ -91,7 +91,7 @@ public class ShowGoodsResultActivity extends Activity{
     public void initDataList(Map<String,String> params) {
         gson = new Gson();
         HttpUtil httpUtil = new HttpUtil();
-        String url = HttpUtil.getUrl(getApplicationContext()) + "/queryProduct";
+        String url = HttpUtil.getUrl(getApplicationContext()) + "queryProduct";
         httpUtil.postRequest(url, params, new Callback() {
 
             @Override

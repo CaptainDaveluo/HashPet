@@ -99,7 +99,7 @@ public class EditProdActivity extends Activity {
                     SellerInfo seller = (SellerInfo)(appContext.getInnerMap().get("seller"));
                     Integer shopId = seller.getShopId();
                     params.put("shopId",String.valueOf(shopId));
-                    String url = HttpUtil.getUrl(getApplicationContext())+"/newProduct";
+                    String url = HttpUtil.getUrl(getApplicationContext())+"newProduct";
                     httpUtil.postRequest(url, params, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {

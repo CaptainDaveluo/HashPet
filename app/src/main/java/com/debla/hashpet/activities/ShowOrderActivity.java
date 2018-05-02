@@ -1,6 +1,9 @@
 package com.debla.hashpet.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 
 import com.debla.hashpet.Model.BaseJsonObject;
 import com.debla.hashpet.Model.Order;
+import com.debla.hashpet.Model.OrderItem;
 import com.debla.hashpet.Model.User;
 import com.debla.hashpet.R;
 import com.debla.hashpet.Utils.AppContext;
@@ -25,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +58,9 @@ public class ShowOrderActivity extends Activity{
     private OrderAdapter adapter;
     public ImageLoader imageLoader; //用来下载图片的类
     private List<Order> orders;
+
+    private String ORDER_STATUS [] = {"已付款","已发货","已完成"};
+    private String ORDER_OPTION [] = {"查看","确认收货","评价"};
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -110,7 +119,7 @@ public class ShowOrderActivity extends Activity{
 
 
 
-    public class OrderAdapter extends BaseAdapter{
+    public class OrderAdapter extends BaseAdapter implements View.OnClickListener{
 
         public ImageLoader imageLoader; //用来下载图片的类
         private String url;
@@ -152,14 +161,73 @@ public class ShowOrderActivity extends Activity{
             TextView tv_num = (TextView) v.findViewById(R.id.order_item_num);
             TextView tv_addr = (TextView) v.findViewById(R.id.order_item_address);
             TextView tv_time = (TextView) v.findViewById(R.id.order_item_time);
+            TextView tv_order_stuatus = (TextView)v.findViewById(R.id.order_item_status);
+            TextView tv_order_price = (TextView) v.findViewById(R.id.show_order_price);
+            Button btn_option = (Button)v.findViewById(R.id.order_item_option);
             ImageView srcImage = (ImageView) v.findViewById(R.id.show_order_img);
             Integer proId = orders.get(position).getItems().get(0).getOrdProId();
             imageLoader.DisplayImage(url+"?goodsId="+proId,srcImage);
             tv_name.setText(String.valueOf(orders.get(position).getOrdGoodsName()));
+            tv_order_price.setText("￥"+orders.get(position).getOrdPrice());
             tv_num.setText("单号："+orders.get(position).getOrdNum());
             tv_addr.setText("地址："+orders.get(position).getOrdAddr());
             tv_time.setText("日期："+orders.get(position).getOrdTime());
+            tv_order_stuatus.setText(ORDER_STATUS[orders.get(position).getOrdStatus()]);
+            btn_option.setText(ORDER_OPTION[orders.get(position).getOrdStatus()]);
+            btn_option.setTag(position);
+            btn_option.setOnClickListener(this);
             return v;
+        }
+
+        @Override
+        public void onClick(View v) {
+            final int position = (Integer)v.getTag();
+            int order_status = orders.get(position).getOrdStatus();
+            switch (order_status){
+                case 0:
+                    Intent intent = new Intent(ShowOrderActivity.this,ShowOrderDetailActivity.class);
+                    List<OrderItem> items =  orders.get(position).getItems();
+                    intent.putExtra("items",(Serializable) items);
+                    intent.putExtra("ordNum",orders.get(position).getOrdNum());
+                    intent.putExtra("address",orders.get(position).getOrdAddr());
+                    startActivity(intent);
+                    break;
+                case 1:
+                    AlertDialog.Builder confirm =
+                        new AlertDialog.Builder(ShowOrderActivity.this);
+                    confirm.setTitle("确认收货吗？");
+                    confirm.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AppContext context = (AppContext) getApplicationContext();
+                            String url = HttpUtil.getUrl(context);
+                            HttpUtil client = new HttpUtil();
+                            Map params = new HashMap();
+                            String ordNum = orders.get(position).getOrdNum();
+                            params.put("orderNum",ordNum);
+                            client.postRequest(url + "/comfirmOrder", params, new Callback() {
+                                @Override
+                                public void onFailure(Call call, IOException e) {
+                                    Log.e("debug","操作失败");
+                                }
+
+                                @Override
+                                public void onResponse(Call call, Response response) throws IOException {
+                                    Log.e("debug","确认收货成功");
+                                    initData();
+                                }
+                            });
+                        }
+                    });
+                    confirm.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    confirm.show();
+                    break;
+            }
         }
     }
 }

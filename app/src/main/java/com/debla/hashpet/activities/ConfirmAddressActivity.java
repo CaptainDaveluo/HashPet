@@ -40,6 +40,7 @@ public class ConfirmAddressActivity extends Activity{
     TextView tvAddress;
 
     private User user;
+    private Double totalPrice;
 
     private Map<String,List<GoodsInfo>> childs;
     @BindView(R.id.btn_confirm_address)
@@ -59,6 +60,7 @@ public class ConfirmAddressActivity extends Activity{
         Bundle bundle = intent.getBundleExtra("data");
         childs= (Map<String, List<GoodsInfo>>) bundle.getSerializable("childs");
         user = ((AppContext)getApplicationContext()).getUser();
+        totalPrice=bundle.getDouble("totalPrice");
         phone=user.getPhonenum();
         name = user.getNickname();
     }
@@ -72,6 +74,7 @@ public class ConfirmAddressActivity extends Activity{
                 bundle.putString("name",name);
                 bundle.putString("address",address);
                 bundle.putString("phone",phone);
+                bundle.putDouble("totalPrice",totalPrice);
                 bundle.putSerializable("childs", (Serializable) childs);
                 intent.putExtra("data",bundle);
                 startActivityForResult(intent,2);

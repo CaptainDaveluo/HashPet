@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/header_address"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#11BDA5">
+
+        <TextView
+            android:id="@+id/order_detail_info"
+            android:text="浙江省 杭州市 余杭区鸬鸟镇太平山村太公堂22组13号"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:maxLines="2"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/finished"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lv_order_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+</LinearLayout>

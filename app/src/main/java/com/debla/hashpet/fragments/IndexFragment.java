@@ -248,7 +248,7 @@ public class IndexFragment extends Fragment implements View.OnClickListener{
     public void initDataList() {
         gson = new Gson();
         HttpUtil httpUtil = new HttpUtil();
-        String url = HttpUtil.getUrl(getContext()) + "/getIndexProduct";
+        String url = HttpUtil.getUrl(getContext()) + "getIndexProduct";
         Map<String, String> params = new HashMap<String, String>();
         params.put("limitNum", "3");
         httpUtil.postRequest(url, params, new Callback() {

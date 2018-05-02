@@ -72,6 +72,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/pay_tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"

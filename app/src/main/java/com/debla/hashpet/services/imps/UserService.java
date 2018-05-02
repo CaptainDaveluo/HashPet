@@ -86,7 +86,7 @@ public class UserService implements IUserService,OkHttpHelper{
             public void onFailure(Call call, IOException e) {
                 Log.e("debug","请求接口出现异常"+e.getMessage());
                 Message msg = new Message();
-                msg.what=1001;
+                msg.what=1002;
                 msg.obj=user;
                 handler.sendMessage(msg);
             }
@@ -121,12 +121,18 @@ public class UserService implements IUserService,OkHttpHelper{
             BaseJsonObject<User> jsonObject = null;
             jsonObject = (BaseJsonObject) gson.fromJson(JSON, jsonType);
             user = (User) jsonObject.getResult();
+            if(user==null)
+                throw new Exception();
             Message msg = new Message();
             msg.what=1001;
             msg.obj=user;
             handler.sendMessage(msg);
         }catch (Exception e){
             Log.e("debug","解析json过程出现异常"+e.getMessage());
+            Message msg = new Message();
+            msg.what=1002;
+            msg.obj=null;
+            handler.sendMessage(msg);
             e.printStackTrace();
         }
     }

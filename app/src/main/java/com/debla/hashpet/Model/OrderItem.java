@@ -1,8 +1,9 @@
 package com.debla.hashpet.Model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class OrderItem {
+public class OrderItem implements Serializable{
     private Integer ordItemId;
 
     private Integer ordId;

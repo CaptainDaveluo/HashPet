@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.debla.hashpet.Model.BaseJsonObject;
@@ -40,9 +41,13 @@ public class PayActivity extends Activity{
     @BindView(R.id.confirm_pay)
     Button btnPay;
 
+    @BindView((R.id.pay_tv_price))
+    TextView tvPrice;
     private String name;
     private String address;
     private String phone;
+
+    private Double totalPrice;
 
     private User user;
 
@@ -55,6 +60,7 @@ public class PayActivity extends Activity{
         ButterKnife.bind(this);
         initData();
         initEvent();
+        tvPrice.setText("￥"+totalPrice);
     }
     public void initData(){
         Intent intent = getIntent();
@@ -63,6 +69,7 @@ public class PayActivity extends Activity{
         name = bundle.getString("name");
         address = bundle.getString("address");
         phone = bundle.getString("phone");
+        totalPrice = bundle.getDouble("totalPrice");
         AppContext appContext = (AppContext) getApplicationContext();
         user = appContext.getUser();
     }
@@ -97,6 +104,7 @@ public class PayActivity extends Activity{
                 params.put("ordUserId",String.valueOf(user.getUserid()));
                 params.put("ordAddr",address);
                 params.put("ordPhone",phone);
+                params.put("totalPrice",String.valueOf(totalPrice));
                 params.put("ordType",String.valueOf(1));
                 params.put("details",json);
                 String url = HttpUtil.getUrl(getApplicationContext());

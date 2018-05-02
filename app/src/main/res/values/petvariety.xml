@@ -19,4 +19,10 @@
         <item>宠物玩具</item>
         <item>宠物服饰</item>
     </string-array>
+    <string-array name="express">
+        <item>圆通</item>
+        <item>顺风</item>
+        <item>申通</item>
+        <item>韵达</item>
+    </string-array>
 </resources>
