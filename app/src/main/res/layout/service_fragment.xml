@@ -22,6 +22,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
+        android:id="@+id/service_layout_clean"
         android:layout_height="150dp">
         <ImageView
             android:src="@drawable/wash"
@@ -50,6 +51,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
+        android:id="@+id/service_layout_beauty"
         android:layout_height="150dp">
         <ImageView
             android:src="@drawable/domestic"
@@ -78,6 +80,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
+        android:id="@+id/service_layout_live"
         android:layout_height="150dp">
         <ImageView
             android:src="@drawable/carry"

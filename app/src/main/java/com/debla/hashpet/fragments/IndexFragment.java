@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.debla.hashpet.Model.BaseJsonObject;
@@ -24,6 +25,7 @@ import com.debla.hashpet.Model.SellerInfo;
 import com.debla.hashpet.R;
 import com.debla.hashpet.Utils.HttpUtil;
 import com.debla.hashpet.activities.ProDetailActivity;
+import com.debla.hashpet.activities.ShowGoodsResultActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -49,6 +51,8 @@ public class IndexFragment extends Fragment implements View.OnClickListener{
     private static final int MAX_VIEW = 10000;
     private int mCount = 5000;
     //private Handler mHandler = new Handler();
+
+    private SearchView searchView;
 
     private List<ImageView> mViews = new ArrayList<ImageView>();
 
@@ -86,10 +90,26 @@ public class IndexFragment extends Fragment implements View.OnClickListener{
             return mRootView;
         }
         mRootView = inflater.inflate(R.layout.index_fragment, container, false);
-
+        searchView = (SearchView) mRootView.findViewById(R.id.index_search);
         initAdvView(mRootView);
         initEvent();
         initDataList();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(getContext(),ShowGoodsResultActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("proName",query);
+                intent.putExtra("params",bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return mRootView;
     }
 
